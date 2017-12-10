@@ -1,0 +1,91 @@
+#:kivy 1.10.0
+#:include base.kv
+
+<Separator@Widget>:
+    size_hint_x: None
+    width: dp(2)
+    canvas:
+        Color:
+            rgba: 0.8, 0.8, 0.8, 1.0
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<MyListItem@ListItemButton>
+    selected_color: [1.0, 1.0, 1.0, 1.0]
+    deselected_color: [0.6, 0.6, 0.6, 1.0]
+    text_size: self.size[0] - sp(self.font_size)*2, self.size[1]
+    halign: 'left'
+    valign: 'center'
+
+<ToolBoxLayout@RelativeLayout>
+    size_hint_y: None
+    height: sp(root.font_size)*3
+    canvas.before:
+        Color:
+            rgba: 0, 0, 0, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<ToolButton@Button>
+    size_hint_x: None
+    width: sp(root.font_size)*3
+
+<ConfigMenu@DropDown>:
+    auto_width: False
+    width: sp(root.font_size)*16
+    Button:
+        text: 'Change password'
+        size_hint_y: None
+        height: sp(root.font_size)*3
+        on_release: root.select('m_change')
+
+<MainView>
+    BoxLayout:
+        orientation: 'horizontal'
+
+        # left side( FILE )
+        BoxLayout:
+            size_hint_x: .4
+            orientation: 'vertical'
+
+            ToolBoxLayout:
+                AnchorLayout:
+                    anchor_x: 'left'
+                    BoxLayout:
+                        ToolButton:
+                            id: f_add
+                            text: '+'
+                            on_press: root.on_file_add()
+                        ToolButton:
+                            id: f_del
+                            text: '-'
+                            on_press: root.on_file_remove()
+                        ToolButton:
+                            id: f_rename
+                            text: 'R'
+                            on_press: root.on_file_rename()
+                AnchorLayout:
+                    anchor_x: 'right'
+                    ToolButton:
+                        id: f_config
+                        text: 'T'
+            ListView:
+                id: lvfile
+
+        Separator:
+
+        # right side( ITEM )
+        BoxLayout:
+            orientation: 'vertical'
+
+            ToolBoxLayout:
+                AnchorLayout:
+                    anchor_x: 'left'
+                    ToolButton:
+                        id: i_add
+                        text: '+'
+                        on_press: root.on_item_add()
+            ListView:
+                id: lvitem

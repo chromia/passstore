@@ -1,0 +1,97 @@
+#:kivy 1.2.0
+#:include base.kv
+
+<MySpacer@Widget>
+    size_hint_y: 0.1
+
+<InputPopup>
+    size_hint_x: .5
+    size_hint_y: .3
+    BoxLayout:
+        orientation: 'vertical'
+        TextInput:
+            id: text
+            text: root.defaulttext
+        BoxLayout:
+            orientation: 'horizontal'
+            Button:
+                text: 'Cancel'
+                on_press: root.on_cancel()
+            Button:
+                text: 'OK'
+                on_press: root.on_ok()
+
+<ErrorPopup>
+    size_hint_x: .3
+    size_hint_y: .3
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: root.message
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+            Button:
+                text: 'OK'
+                on_press: root.on_press()
+            Label:
+
+<YesNoPopUp>
+    size_hint_x: .5
+    size_hint_y: .3
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: root.message
+        BoxLayout:
+        	orientation: 'horizontal'
+        	Button:
+        		size_hint_x: .5
+        		text: 'No'
+        		on_press: root.on_no()
+        	Button:
+        		size_hint_x: .5
+        		text: 'Yes'
+        		on_press: root.on_yes()
+
+<EditPopup>
+    title: 'mypopup'
+    size_hint_x: .5
+    size_hint_y: .4
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+            Label:
+            Button:
+                text: 'Remove'
+                on_press: root.on_remove()
+                disabled: (not root.removable)
+        BoxLayout:
+            Button:
+                id: b_key
+                text: 'key'
+                on_press: root.on_key()
+            TextInput:
+                id: t_key
+                text: root.item.key
+                multiline: False
+        BoxLayout:
+            Button:
+                id: b_value
+                text: 'value'
+                on_press: root.on_value()
+            TextInput:
+                id: t_value
+                text: root.item.value
+                multiline: False
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+            Button:
+                text: 'Cancel'
+                on_press: root.on_cancel()
+            Button:
+                text: 'Apply'
+                on_press: root.on_apply()
