@@ -99,3 +99,8 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# characteristic of passstore project
+.flake8
+.data
+.backup
