@@ -16,11 +16,10 @@ This project is for practice python&Git and an <a href="https://kivy.org/">kivy<
 1. open app/base.kv with text editor, edit below code.
 > font_name: 'meiryo.ttc'
 
-    if you are using multi-byte language( e.g. Japanese, Chinese, Korean, etc... ),
-    you may be replace 'meiryo.ttc' to your language compatible font
-    ( 'simsum.ttc', 'malgun.ttf', etc... )<br>
-    \* kivy does not have multi-language fonts.<br>
-    if you are using single-byte language, remove this line. Then the app use default font 'Roboto'.
+    If you are using multi-byte language( e.g. Japanese, Chinese, Korean, etc... ),
+    You may rewrite 'meiryo.ttc' to your language compatible font( 'simsum.ttc', 'malgun.ttf', etc... )
+    *Kivy does not have multi-language fonts.
+    If you are using single-byte language, remove this line. Then the app use default font 'Roboto'.
 
 2. run passstore.py
 > python passstore.py
